@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IQO – Especialistas en Filtración Larox</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--negro:#111;--amarillo:#E8D800;--rojo:#C8001A;--gris-claro:#F5F5F2;--gris-medio:#888;--blanco:#fff}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--negro);background:var(--blanco);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{background:var(--negro);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;border-bottom:3px solid var(--rojo)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+/* Logo real IQO */
+.logo-img{height:40px;width:auto;display:block}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:#ccc;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--amarillo)}
+.nav-cta{background:var(--amarillo);color:var(--negro);padding:8px 18px;border-radius:4px;font-weight:700;font-size:13px;transition:background .2s}
+.nav-cta:hover{background:#d4c300}
+
+/* HERO */
+.hero{background:var(--negro);color:var(--blanco);padding:90px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-block;background:var(--rojo);color:var(--blanco);font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 12px;border-radius:2px;margin-bottom:20px;text-transform:uppercase}
+.hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero h1 span{color:var(--amarillo)}
+.hero p{color:#bbb;font-size:17px;line-height:1.7;margin-bottom:32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--amarillo);color:var(--negro);padding:14px 28px;border-radius:4px;font-weight:800;font-size:15px;border:none;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:#d4c300}
+.btn-secondary{background:transparent;color:var(--blanco);padding:14px 28px;border-radius:4px;font-weight:700;font-size:15px;border:2px solid #444;cursor:pointer;transition:border-color .2s,color .2s}
+.btn-secondary:hover{border-color:var(--amarillo);color:var(--amarillo)}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:#1c1c1c;border:1px solid #2a2a2a;border-left:3px solid var(--amarillo);border-radius:6px;padding:20px}
+.stat-num{font-size:36px;font-weight:900;color:var(--amarillo);line-height:1}
+.stat-unit{font-size:16px;color:var(--amarillo)}
+.stat-desc{color:#999;font-size:13px;margin-top:4px}
+.stat-flag{display:inline-block;background:#1c1c1c;border:1px solid #2a2a2a;border-left:3px solid var(--rojo);border-radius:6px;padding:20px;grid-column:span 2}
+.stat-flag .stat-desc{color:#ccc;font-size:14px}
+
+/* SECTION BASE */
+section{padding:80px 5%}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--rojo);text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(24px,3vw,36px);font-weight:900;line-height:1.2;margin-bottom:16px}
+.section-sub{color:var(--gris-medio);font-size:16px;max-width:580px;margin-bottom:48px}
+
+/* PROBLEMA */
+.problema{background:var(--gris-claro)}
+.problema-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.prob-card{background:var(--blanco);border:1px solid #e0e0e0;border-top:4px solid var(--rojo);border-radius:8px;padding:24px}
+.prob-icon{font-size:28px;margin-bottom:12px}
+.prob-card h3{font-size:15px;font-weight:700;margin-bottom:8px}
+.prob-card p{font-size:13px;color:#666;line-height:1.6}
+
+/* SERVICIOS */
+.servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.srv-card{border:1px solid #e8e8e8;border-radius:10px;padding:28px;transition:box-shadow .2s,border-color .2s;cursor:default}
+.srv-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);border-color:var(--amarillo)}
+.srv-icon{width:48px;height:48px;background:var(--negro);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px}
+.srv-card h3{font-size:17px;font-weight:800;margin-bottom:10px}
+.srv-card p{font-size:14px;color:#555;line-height:1.65}
+.srv-tag{display:inline-block;margin-top:14px;background:var(--gris-claro);color:var(--negro);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
+
+/* EXPERTO */
+.experto{background:var(--negro);color:var(--blanco)}
+.experto-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.experto-img{background:#1c1c1c;border:1px solid #333;border-radius:12px;padding:48px 32px;text-align:center}
+.exp-initials{width:100px;height:100px;background:var(--amarillo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:var(--negro);margin:0 auto 20px}
+.exp-name{font-size:22px;font-weight:800;margin-bottom:6px}
+.exp-role{color:#aaa;font-size:14px;margin-bottom:24px}
+.exp-badges{display:flex;flex-direction:column;gap:10px}
+.exp-badge{background:#2a2a2a;border-left:3px solid var(--amarillo);padding:12px 16px;border-radius:4px;font-size:13px;color:#ccc}
+.exp-badge strong{color:var(--amarillo);display:block;font-size:14px;margin-bottom:2px}
+.experto-info h2{font-size:clamp(22px,2.5vw,32px);font-weight:900;line-height:1.2;margin-bottom:24px}
+.experto-info h2 span{color:var(--amarillo)}
+.experto-info p{color:#bbb;font-size:15px;line-height:1.8;margin-bottom:20px}
+.paises{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.pais{background:#1c1c1c;border:1px solid #2a2a2a;border-radius:4px;padding:6px 14px;font-size:13px;color:#ddd}
+
+/* MODELO */
+.modelo{background:var(--gris-claro)}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;position:relative}
+.paso{background:var(--blanco);border:1px solid #e0e0e0;padding:28px 22px;position:relative;text-align:center}
+.paso-num{width:40px;height:40px;background:var(--negro);color:var(--amarillo);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;margin:0 auto 14px}
+.paso h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.paso p{font-size:13px;color:#666;line-height:1.6}
+
+/* SEGURIDAD */
+.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.seg-visual{background:var(--negro);border-radius:12px;padding:40px;text-align:center}
+.seg-icon-big{font-size:72px;margin-bottom:16px}
+.seg-label{color:var(--amarillo);font-weight:800;font-size:18px}
+.seg-items{display:flex;flex-direction:column;gap:16px}
+.seg-item{display:flex;gap:14px;align-items:flex-start}
+.seg-dot{width:12px;height:12px;background:var(--rojo);border-radius:50%;flex-shrink:0;margin-top:6px}
+.seg-item p{font-size:15px;line-height:1.65}
+.seg-item strong{font-weight:800}
+
+/* CONTACTO */
+.contacto{background:var(--negro);color:var(--blanco)}
+.contacto-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
+.contacto-info h2{font-size:clamp(22px,2.5vw,34px);font-weight:900;margin-bottom:20px;line-height:1.2}
+.contacto-info h2 span{color:var(--amarillo)}
+.contacto-info p{color:#bbb;font-size:15px;line-height:1.8;margin-bottom:32px}
+.info-item{display:flex;gap:12px;align-items:center;margin-bottom:16px;color:#ddd;font-size:15px}
+.info-icon{width:36px;height:36px;background:#1c1c1c;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid #2a2a2a}
+
+/* FORM */
+.form-card{background:#141414;border:1px solid #2a2a2a;border-radius:12px;padding:36px}
+.form-title{font-size:18px;font-weight:800;margin-bottom:24px;color:var(--blanco)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#ccc;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:#1c1c1c;border:1px solid #333;border-radius:6px;padding:11px 14px;color:var(--blanco);font-size:14px;outline:none;transition:border-color .2s;font-family:inherit}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--amarillo)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#555}
+.phone-row{display:grid;grid-template-columns:160px 1fr;gap:8px}
+.phone-row select{background:#1c1c1c;border:1px solid #333;border-radius:6px;padding:11px 10px;color:var(--blanco);font-size:13px;outline:none;cursor:pointer;width:100%;font-family:inherit}
+.phone-row select:focus{border-color:var(--amarillo)}
+.servicios-check{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.chk-item{display:flex;align-items:center;gap:8px;background:#1c1c1c;border:1px solid #2a2a2a;border-radius:6px;padding:10px 12px;cursor:pointer;transition:border-color .2s}
+.chk-item:hover{border-color:#444}
+.chk-item input[type=checkbox]{accent-color:var(--amarillo);width:16px;height:16px;cursor:pointer;flex-shrink:0}
+.chk-item span{font-size:13px;color:#ddd}
+.chk-item.checked{border-color:var(--amarillo)}
+.form-group textarea{resize:vertical;min-height:90px;line-height:1.6}
+.btn-send{width:100%;background:var(--amarillo);color:var(--negro);border:none;border-radius:6px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;transition:background .2s;margin-top:8px}
+.btn-send:hover{background:#d4c300}
+.btn-send:disabled{background:#555;color:#888;cursor:not-allowed}
+.form-msg{display:none;padding:14px;border-radius:6px;font-size:14px;margin-top:14px;text-align:center;font-weight:600}
+.form-msg.ok{background:#0a3a0a;color:#7dff7d;display:block}
+.form-msg.err{background:#3a0a0a;color:#ff8080;display:block}
+.field-err{font-size:12px;color:#ff6060;margin-top:4px;display:none}
+
+/* FOOTER */
+footer{background:#0a0a0a;border-top:3px solid var(--rojo);padding:40px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-left{color:#666;font-size:13px}
+.footer-logo{font-size:22px;font-weight:900;color:var(--amarillo);margin-bottom:6px}
+.footer-right{color:#555;font-size:12px;text-align:right}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;gap:40px}
+  .experto-grid,.seg-grid,.contacto-grid{grid-template-columns:1fr}
+  .servicios-check{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  footer{flex-direction:column;text-align:center}
+  .footer-right{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <!-- Logo real IQO (SVG inline, sin frase inferior) -->
+    <svg width="90" height="38" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Fondo badge -->
+      <rect x="2" y="2" width="196" height="76" rx="8" fill="#111" stroke="#C8001A" stroke-width="4"/>
+      <!-- Texto IQO -->
+      <text x="100" y="56" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="52" fill="#E8D800" text-anchor="middle" letter-spacing="4">IQO</text>
+    </svg>
+  </div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#experto">Nosotros</a>
+    <a href="#modelo">Metodología</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Solicitar Asesoría</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">2026</div>
+    <h1>Expertos en Filtración <span>Larox</span> para la Gran Minería</h1>
+    <p>Asesoría técnica especializada, capacitación, overhaul y repuestos para sistemas de filtración. Formación directa en fábrica. Presencia en 6 países de Latinoamérica.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Contáctenos</a>
+      <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">40<span class="stat-unit">+</span></div>
+      <div class="stat-desc">Años en la industria minera</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">25<span class="stat-unit">+</span></div>
+      <div class="stat-desc">Años especializados en filtración</div>
+    </div>
+    <div class="stat-flag">
+      <div class="stat-desc">🇫🇮 &nbsp;Formación técnica directa en fábrica Larox — <strong style="color:var(--blanco)">Lappeenranta, Finlandia</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div>
+    <div class="section-label">El desafío</div>
+    <h2 class="section-title">Problemáticas que enfrentan las operaciones mineras</h2>
+    <p class="section-sub">En la minería actual, con leyes decrecientes y costos al alza, los sistemas de filtración son críticos para la rentabilidad de la faena.</p>
+    <div class="problema-grid">
+      <div class="prob-card">
+        <div class="prob-icon">⚙️</div>
+        <h3>Fallas recurrentes</h3>
+        <p>Desgaste prematuro en válvulas pinch, rodillos, placas y componentes hidráulicos de equipos Larox.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">📉</div>
+        <h3>Pérdida de eficiencia</h3>
+        <p>Baja eficiencia en separación sólido-líquido y operación fuera de parámetros óptimos de diseño.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🚨</div>
+        <h3>Detenciones no programadas</h3>
+        <p>Paradas imprevistas con impacto directo en la continuidad operacional y aumento de costos.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🔧</div>
+        <h3>Brechas técnicas</h3>
+        <p>Deficiencias en pautas de mantención y brechas en capacidades del equipo interno de mantenimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-label">Lo que hacemos</div>
+  <h2 class="section-title">Solución integral en filtración</h2>
+  <p class="section-sub">Cuatro líneas de servicio diseñadas para maximizar el rendimiento y disponibilidad de sus equipos Larox.</p>
+  <div class="servicios-grid">
+    <div class="srv-card">
+      <div class="srv-icon">📚</div>
+      <h3>Capacitación</h3>
+      <p>Programas estructurados para operadores y mecánicos: operación de filtros, buenas prácticas, lubricación y protocolos de intervención segura. Reducción de errores operacionales y fortalecimiento del equipo interno.</p>
+      <span class="srv-tag">Operadores · Mecánicos</span>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🔍</div>
+      <h3>Asesoría Técnica</h3>
+      <p>Evaluación en terreno, diagnóstico de causas raíz y definición de acciones correctivas alineadas con estándares de fábrica Larox. Planificación de paradas con Cartas Gantt y control de inventario.</p>
+      <span class="srv-tag">Spot · Contrato · Emergencia</span>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🏭</div>
+      <h3>Overhaul de Equipos</h3>
+      <p>Reconstrucción técnica profunda para retornar el activo a condición de "cero horas". Mantención preventiva, correctiva y overhaul completo con supervisión especializada en terreno.</p>
+      <span class="srv-tag">PPF · PEX · Midi Size</span>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🔩</div>
+      <h3>Venta de Repuestos</h3>
+      <p>Suministro, fabricación local y recuperación de partes y componentes con estándares europeos, accesorios placas filtrantes, sellos, rodillos, raspadores de alta durabilidad. Reducción de tiempos de entrega de meses a semanas.</p>
+      <span class="srv-tag">Fabricación local · Alta durabilidad</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTO -->
+<section id="experto" class="experto">
+  <div class="experto-grid">
+    <div class="experto-img">
+      <div class="exp-initials">IQ</div>
+      <div class="exp-name">Igor Quezada Obregón</div>
+      <div class="exp-role">Fundador · Especialista en Filtración Larox</div>
+      <div class="exp-badges">
+        <div class="exp-badge"><strong>🇫🇮 Formación en Fábrica – Finlandia</strong>Capacitación directa en Larox (Outotec), Lappeenranta. Conocimiento de raíz del diseño y operación.</div>
+        <div class="exp-badge"><strong>40+ años en minería extractiva</strong>Trayectoria sostenida en operaciones de alta complejidad en Latinoamérica.</div>
+        <div class="exp-badge"><strong>25+ años en filtración Larox</strong>Especialización profunda en sistemas PPF, PEX y Midi Size.</div>
+      </div>
+    </div>
+    <div class="experto-info">
+      <div class="section-label">El experto detrás de la marca</div>
+      <h2>Conocimiento de raíz que <span>los servicios generales no pueden replicar</span></h2>
+      <p>Igor Quezada Obregón posee una formación técnica directa en las instalaciones de Larox (Outotec) en Lappeenranta, Finlandia. Esta inmersión técnica permite intervenir activos críticos con una precisión que ningún contratista generalista puede ofrecer.</p>
+      <p>Ha actuado como consultor internacional en proyectos de alta complejidad en toda la región, aportando diagnósticos precisos y soluciones orientadas a la continuidad operacional.</p>
+      <div class="paises">
+        <div class="pais">🇨🇱 Chile</div>
+        <div class="pais">🇵🇪 Perú</div>
+        <div class="pais">🇧🇷 Brasil</div>
+        <div class="pais">🇦🇷 Argentina</div>
+        <div class="pais">🇺🇾 Uruguay</div>
+        <div class="pais">🇪🇨 Ecuador</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELO DE TRABAJO -->
+<section id="modelo" class="modelo">
+  <div class="section-label">Cómo trabajamos</div>
+  <h2 class="section-title">Metodología orientada a resultados medibles</h2>
+  <p class="section-sub">Cada intervención sigue un ciclo riguroso, desde la evaluación inicial hasta el seguimiento post-intervención.</p>
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <h3>Diagnóstico</h3>
+      <p>Evaluación en terreno e identificación de brechas operacionales y técnicas</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <h3>Plan de Acción</h3>
+      <p>Definición de intervenciones, recursos y Carta Gantt de ejecución</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <h3>Ejecución</h3>
+      <p>Implementación técnica con supervisión especializada en terreno</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <h3>Seguimiento</h3>
+      <p>Evaluación de resultados, ajustes y mejora continua</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURIDAD -->
+<section>
+  <div class="seg-grid">
+    <div class="seg-visual">
+      <div class="seg-icon-big">🦺</div>
+      <div class="seg-label">Compromiso Cero Daño</div>
+      <p style="color:#888;font-size:13px;margin-top:10px">HSEC · PTS · Control de Riesgos Críticos</p>
+    </div>
+    <div>
+      <div class="section-label">Seguridad operacional</div>
+      <h2 class="section-title">En la gran minería, la operatividad no tiene valor sin la integridad de las personas</h2>
+      <div class="seg-items">
+        <div class="seg-item">
+          <div class="seg-dot"></div>
+          <p><strong>Procedimientos de Trabajo Seguro (PTS)</strong> rigurosos, alineados con estándares internacionales HSEC del mandante.</p>
+        </div>
+        <div class="seg-item">
+          <div class="seg-dot"></div>
+          <p><strong>Control de Riesgos Críticos</strong> con planes específicos para intervención de filtros y supervisión permanente en terreno.</p>
+        </div>
+        <div class="seg-item">
+          <div class="seg-dot"></div>
+          <p><strong>Enfoque preventivo</strong> mediante planificación detallada para anticipar y eliminar condiciones de riesgo antes de cada intervención.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <div class="section-label" style="color:var(--amarillo)">Hablemos</div>
+      <h2>"Nuestra misión no es solo <span>mantener su equipo</span>; es asegurar que su planta nunca se detenga por causa de la filtración."</h2>
+      <p>Contáctenos para agendar un diagnóstico técnico, solicitar una cotización o resolver consultas sobre nuestros servicios.</p>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <span>(+56) 9 9499 1386</span>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <span>igor.quezada.o@iqoasesorias.com</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-title">Solicitar información</div>
+
+      <div class="form-group">
+        <label>Nombre completo *</label>
+        <input type="text" id="f-nombre" placeholder="Ej: Juan Pérez González">
+        <div class="field-err" id="err-nombre">Ingrese su nombre</div>
+      </div>
+
+      <div class="form-group">
+        <label>Teléfono de contacto *</label>
+        <div class="phone-row">
+          <select id="f-pais">
+            <optgroup label="Latinoamérica">
+              <option value="+56">🇨🇱 Chile +56</option>
+              <option value="+51">🇵🇪 Perú +51</option>
+              <option value="+55">🇧🇷 Brasil +55</option>
+              <option value="+54">🇦🇷 Argentina +54</option>
+              <option value="+598">🇺🇾 Uruguay +598</option>
+              <option value="+593">🇪🇨 Ecuador +593</option>
+              <option value="+57">🇨🇴 Colombia +57</option>
+              <option value="+52">🇲🇽 México +52</option>
+              <option value="+58">🇻🇪 Venezuela +58</option>
+              <option value="+591">🇧🇴 Bolivia +591</option>
+              <option value="+595">🇵🇾 Paraguay +595</option>
+              <option value="+507">🇵🇦 Panamá +507</option>
+              <option value="+506">🇨🇷 Costa Rica +506</option>
+              <option value="+503">🇸🇻 El Salvador +503</option>
+              <option value="+502">🇬🇹 Guatemala +502</option>
+              <option value="+504">🇭🇳 Honduras +504</option>
+              <option value="+505">🇳🇮 Nicaragua +505</option>
+              <option value="+1-809">🇩🇴 Rep. Dominicana +1-809</option>
+              <option value="+53">🇨🇺 Cuba +53</option>
+            </optgroup>
+            <optgroup label="Norteamérica">
+              <option value="+1">🇺🇸 EE.UU. +1</option>
+              <option value="+1-CA">🇨🇦 Canadá +1</option>
+            </optgroup>
+            <optgroup label="Europa">
+              <option value="+34">🇪🇸 España +34</option>
+              <option value="+358">🇫🇮 Finlandia +358</option>
+              <option value="+44">🇬🇧 Reino Unido +44</option>
+              <option value="+33">🇫🇷 Francia +33</option>
+              <option value="+49">🇩🇪 Alemania +49</option>
+              <option value="+39">🇮🇹 Italia +39</option>
+              <option value="+31">🇳🇱 Países Bajos +31</option>
+              <option value="+46">🇸🇪 Suecia +46</option>
+              <option value="+47">🇳🇴 Noruega +47</option>
+              <option value="+41">🇨🇭 Suiza +41</option>
+              <option value="+43">🇦🇹 Austria +43</option>
+              <option value="+351">🇵🇹 Portugal +351</option>
+              <option value="+7">🇷🇺 Rusia +7</option>
+              <option value="+48">🇵🇱 Polonia +48</option>
+              <option value="+32">🇧🇪 Bélgica +32</option>
+            </optgroup>
+            <optgroup label="Asia & Oceanía">
+              <option value="+86">🇨🇳 China +86</option>
+              <option value="+81">🇯🇵 Japón +81</option>
+              <option value="+82">🇰🇷 Corea del Sur +82</option>
+              <option value="+91">🇮🇳 India +91</option>
+              <option value="+61">🇦🇺 Australia +61</option>
+              <option value="+64">🇳🇿 Nueva Zelanda +64</option>
+              <option value="+65">🇸🇬 Singapur +65</option>
+              <option value="+66">🇹🇭 Tailandia +66</option>
+              <option value="+62">🇮🇩 Indonesia +62</option>
+              <option value="+60">🇲🇾 Malasia +60</option>
+            </optgroup>
+            <optgroup label="África & Medio Oriente">
+              <option value="+27">🇿🇦 Sudáfrica +27</option>
+              <option value="+20">🇪🇬 Egipto +20</option>
+              <option value="+212">🇲🇦 Marruecos +212</option>
+              <option value="+234">🇳🇬 Nigeria +234</option>
+              <option value="+254">🇰🇪 Kenia +254</option>
+              <option value="+971">🇦🇪 Emiratos Árabes +971</option>
+              <option value="+966">🇸🇦 Arabia Saudita +966</option>
+              <option value="+972">🇮🇱 Israel +972</option>
+              <option value="+90">🇹🇷 Turquía +90</option>
+            </optgroup>
+          </select>
+          <input type="tel" id="f-tel" placeholder="9 1234 5678">
+        </div>
+        <div class="field-err" id="err-tel">Ingrese un número de teléfono válido</div>
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico *</label>
+        <input type="email" id="f-email" placeholder="usuario@empresa.cl">
+        <div class="field-err" id="err-email">Ingrese un correo válido (ej: nombre@dominio.cl)</div>
+      </div>
+
+      <div class="form-group">
+        <label>Servicio(s) de interés *</label>
+        <div class="servicios-check" id="chk-group">
+          <label class="chk-item" onclick="toggleChk(this)">
+            <input type="checkbox" value="Capacitación"> <span>📚 Capacitación</span>
+          </label>
+          <label class="chk-item" onclick="toggleChk(this)">
+            <input type="checkbox" value="Asesoría Técnica"> <span>🔍 Asesoría Técnica</span>
+          </label>
+          <label class="chk-item" onclick="toggleChk(this)">
+            <input type="checkbox" value="Overhaul"> <span>🏭 Overhaul</span>
+          </label>
+          <label class="chk-item" onclick="toggleChk(this)">
+            <input type="checkbox" value="Venta de Repuestos"> <span>🔩 Venta de Repuestos</span>
+          </label>
+          <label class="chk-item" onclick="toggleChk(this)">
+            <input type="checkbox" value="Otros"> <span>➕ Otros</span>
+          </label>
+        </div>
+        <div class="field-err" id="err-srv">Seleccione al menos un servicio</div>
+      </div>
+
+      <div class="form-group">
+        <label>Cuéntenos su solicitud</label>
+        <textarea id="f-msg" placeholder="Describa brevemente su necesidad, tipo de equipo, operación, etc."></textarea>
+      </div>
+
+      <button class="btn-send" id="btn-enviar" onclick="enviarForm()">Enviar solicitud →</button>
+      <div class="form-msg" id="form-msg"></div>
+    </div>
+  </div>
+</section>
+<!-- Web3Forms hidden config -->
+<form id="w3f-form" style="display:none">
+  <input type="hidden" name="access_key" value="106f791a-45a9-4603-b8a1-3eb1509680f0">
+  <input type="hidden" name="to" value="igor.quezada.o@iqoasesorias.com">
+  <input type="hidden" name="cc" value="rquezada.mp@gmail.com">
+  <input type="hidden" name="from_name" value="IQO Landing Web">
+  <input type="hidden" name="subject" id="w3f-subject">
+  <input type="hidden" name="name" id="w3f-name">
+  <input type="hidden" name="email" id="w3f-email">
+  <input type="hidden" name="phone" id="w3f-phone">
+  <input type="hidden" name="message" id="w3f-message">
+  <input type="checkbox" name="botcheck" style="display:none">
+</form>
+
+<!-- Netlify Forms: este bloque NO se ve ni se usa con JS, solo existe para que Netlify
+     detecte el formulario al momento de publicar el sitio (build) y active el buzón
+     en el panel Site settings > Forms. El envío real se hace por fetch() en el script. -->
+<form name="contacto-iqo" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nombre">
+  <input type="tel" name="telefono">
+  <input type="email" name="email">
+  <input type="text" name="servicios">
+  <textarea name="mensaje"></textarea>
+  <input type="text" name="bot-field">
+</form>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">IQO</div>
+    <div>Igor Quezada Obregón Asesorías Técnicas EIRL</div>
+    <div style="margin-top:4px">Gran Minería · Filtración · Asesorías</div>
+  </div>
+  <div class="footer-right">
+    <div>Especialistas en Sistemas de Filtración Larox</div>
+    <div style="margin-top:4px">Chile · Perú · Brasil · Argentina · Uruguay · Ecuador</div>
+    <div style="margin-top:8px;color:#444">© 2026 IQO Asesorías Técnicas EIRL</div>
+  </div>
+</footer>
+
+<script>
+function toggleChk(lbl){
+  setTimeout(()=>{
+    lbl.classList.toggle('checked', lbl.querySelector('input').checked);
+  },0);
+}
+function validEmail(e){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.trim());
+}
+function showErr(id, show){
+  document.getElementById(id).style.display = show ? 'block' : 'none';
+}
+async function enviarForm(){
+  let ok = true;
+  const nombre = document.getElementById('f-nombre').value.trim();
+  const tel = document.getElementById('f-tel').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  const pais = document.getElementById('f-pais').value;
+  const servicios = [...document.querySelectorAll('#chk-group input:checked')].map(c=>c.value);
+
+  if(!nombre){showErr('err-nombre',true);ok=false;}else showErr('err-nombre',false);
+  if(!tel||tel.length<6){showErr('err-tel',true);ok=false;}else showErr('err-tel',false);
+  if(!validEmail(email)){showErr('err-email',true);ok=false;}else showErr('err-email',false);
+  if(servicios.length===0){showErr('err-srv',true);ok=false;}else showErr('err-srv',false);
+
+  if(!ok) return;
+
+  const btn = document.getElementById('btn-enviar');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // Rellenar campos ocultos de Web3Forms
+  document.getElementById('w3f-subject').value = `Solicitud IQO – ${servicios.join(', ')}`;
+  document.getElementById('w3f-name').value = nombre;
+  document.getElementById('w3f-email').value = email;
+  document.getElementById('w3f-phone').value = `${pais} ${tel}`;
+  document.getElementById('w3f-message').value =
+    `Servicios de interés: ${servicios.join(', ')}\n\nSolicitud:\n${msg || '(sin mensaje adicional)'}`;
+
+  const formData = new FormData(document.getElementById('w3f-form'));
+  const msgEl = document.getElementById('form-msg');
+
+  try {
+    // 1) Envío por Web3Forms (manda el correo directo)
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+
+    // 2) Envío en paralelo a Netlify Forms (queda registrado en el panel de Netlify
+    //    y permite activar también una notificación por correo desde ahí, como respaldo)
+    try {
+      const netlifyBody = new URLSearchParams({
+        'form-name': 'contacto-iqo',
+        nombre: nombre,
+        telefono: `${pais} ${tel}`,
+        email: email,
+        servicios: servicios.join(', '),
+        mensaje: msg || '(sin mensaje adicional)'
+      });
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: netlifyBody.toString()
+      });
+    } catch (netlifyErr) {
+      console.warn('Netlify Forms no disponible (normal si se prueba fuera de Netlify):', netlifyErr);
+    }
+
+    if(data.success){
+      msgEl.className = 'form-msg ok';
+      msgEl.textContent = '✅ ¡Solicitud enviada! Nos pondremos en contacto a la brevedad.';
+      btn.textContent = 'Enviado ✓';
+      // Limpiar campos
+      ['f-nombre','f-tel','f-email','f-msg'].forEach(id=>document.getElementById(id).value='');
+      document.querySelectorAll('#chk-group input').forEach(c=>{c.checked=false;});
+      document.querySelectorAll('.chk-item').forEach(l=>l.classList.remove('checked'));
+    } else {
+      throw new Error(data.message || 'Error desconocido');
+    }
+  } catch(err){
+    msgEl.className = 'form-msg err';
+    msgEl.textContent = '❌ Hubo un problema al enviar. Intente nuevamente o escríbanos directo al correo.';
+    btn.disabled = false;
+    btn.textContent = 'Enviar solicitud →';
+  }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
